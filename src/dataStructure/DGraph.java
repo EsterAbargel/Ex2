@@ -1,11 +1,29 @@
 package dataStructure;
 
+import java.util.ArrayList;
 import java.util.Collection;
 import java.util.HashMap;
 
+import javax.swing.text.html.HTMLDocument.Iterator;
+
 public class DGraph implements graph{
+	
 	private HashMap<Integer,node_data> nd=new HashMap<>();
-	private HashMap<Integer,HashMap<Integer,edge_data>> ed=new HashMap<>();
+	private HashMap<node_data,edge_data> e=new HashMap<>();
+	private HashMap<node_data,HashMap<node_data,edge_data>> ed=new HashMap<>();
+	public static int mc=0;
+	
+	public DGraph(NodeData [] vertices,EdgeData[] edge) {
+		for(int i=0;i<vertices.length;i++) {
+			this.addNode(vertices[i]);
+		}
+		for(int j=0;j<edge.length;j++) {
+			this.connect(edge[j].getSrc(), edge[j].getDest(), edge[j].getWeight());
+		}
+		
+		
+	}
+	
 	@Override
 	public node_data getNode(int key) {
 		return  nd.get(key);
@@ -24,7 +42,10 @@ public class DGraph implements graph{
 
 	@Override
 	public void connect(int src, int dest, double w) {
-		// TODO Auto-generated method stub
+		EdgeData tempEdge=new EdgeData(nd.get(src),nd.get(dest),w);
+		e.put(nd.get(dest), tempEdge);
+		ed.put(nd.get(src), e);
+		
 		
 	}
 
@@ -49,7 +70,7 @@ public class DGraph implements graph{
 	@Override
 	public edge_data removeEdge(int src, int dest) {
 		// TODO Auto-generated method stub
-		return ed.remove(src).remove(dest);
+		return ed.get(src).remove(dest);
 	}
 
 	@Override
@@ -66,8 +87,7 @@ public class DGraph implements graph{
 
 	@Override
 	public int getMC() {
-		// TODO Auto-generated method stub
-		return 0;
+		return mc;
 	}
 
 }

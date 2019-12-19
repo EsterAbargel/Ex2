@@ -2,6 +2,7 @@ package algorithms;
 
 import java.util.List;
 
+import dataStructure.DGraph;
 import dataStructure.graph;
 import dataStructure.node_data;
 /**
@@ -10,11 +11,15 @@ import dataStructure.node_data;
  * @author 
  *
  */
+   
 public class Graph_Algo implements graph_algorithms{
-
+	
+	private graph graph;
+	
 	@Override
 	public void init(graph g) {
 		// TODO Auto-generated method stub
+		this.graph=g;
 		
 	}
 
@@ -39,7 +44,14 @@ public class Graph_Algo implements graph_algorithms{
 	@Override
 	public double shortestPathDist(int src, int dest) {
 		// TODO Auto-generated method stub
-		return 0;
+		
+			int len;
+			if (src == dest)
+				len = 0;
+			String s = this.graph.getNode(dest).getInfo();
+			len = Integer.parseInt(s.substring(s.indexOf(','+1)));
+			return len;
+
 	}
 
 	@Override
@@ -57,7 +69,7 @@ public class Graph_Algo implements graph_algorithms{
 	@Override
 	public graph copy() {
 		// TODO Auto-generated method stub
-		return null;
+		return this.graph;
 	}
 
 }
