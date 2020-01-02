@@ -1,8 +1,10 @@
 package dataStructure;
 
+import java.io.Serializable;
+
 import utils.Point3D;
 
-public class NodeData implements node_data {
+public class NodeData implements node_data,Serializable {
 	private int id;
 	private double x,y,z;
 	private double weight;
@@ -16,12 +18,14 @@ public class NodeData implements node_data {
 		this.y=y;
 		this.z=z;
 		this.tag=0;
+		this.weight=Double.POSITIVE_INFINITY;
 		
 	}
 	public NodeData(int id,Point3D p) {
 		this.id=id;
 		setLocation(p);
 		this.tag=0;
+		this.weight=Double.POSITIVE_INFINITY;
 
 	}
 	@Override
@@ -78,5 +82,11 @@ public class NodeData implements node_data {
 	public void setTag(int t) {
 		this.tag=t;
 
+	}
+	
+	public String toString() {
+		String ans=Integer.toString(this.id);
+		return ans;
+		
 	}
 }

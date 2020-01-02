@@ -1,12 +1,14 @@
 package dataStructure;
 
-public class EdgeData implements edge_data {
-	private node_data src,dest;
+import java.io.Serializable;
+
+public class EdgeData implements edge_data,Serializable {
+	private NodeData src,dest;
 	private double weight;
 	private int tag;
 	String info="";
 	
-	public EdgeData(node_data src,node_data dest,double weight) {
+	public EdgeData(NodeData src,NodeData dest,double weight) {
 		this.src=src;
 		this.dest=dest;
 		this.weight=weight;
@@ -52,6 +54,18 @@ public class EdgeData implements edge_data {
 	public void setTag(int t) {
 		// TODO Auto-generated method stub
 		this.tag=t;
+	}
+	public node_data getNodeSrc() {
+		return this.src;
+	}
+	
+	public node_data getNodeDest() {
+		return this.dest;
+	}
+	
+	public String toString() {
+		String ans="source: "+this.getSrc()+" destnation: "+this.getDest()+" weight: "+this.getWeight();
+		return ans;
 	}
 
 }
