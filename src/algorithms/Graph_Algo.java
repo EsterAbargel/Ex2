@@ -202,7 +202,6 @@ public class Graph_Algo implements graph_algorithms,  Serializable {
 		ans.addAll(shortestPath(targets.get(0),targets.get(1)));
 		for (int i = 1; i <targets.size()-1 ; i++) {
 			ans.addAll(shortestPath(targets.get(i),targets.get(i+1)));
-			ans.remove(i);
 		}
 		for (int i = 0; i <ans.size()-1 ; i++) {
 			if (ans.get(i).getKey()==ans.get(i+1).getKey()){

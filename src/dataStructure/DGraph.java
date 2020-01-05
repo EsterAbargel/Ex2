@@ -8,7 +8,7 @@ public class DGraph implements graph,Serializable{
 
 	HashMap<Integer,node_data> nd=new HashMap<>();
 	HashMap<Integer,HashMap<Integer,edge_data>> ed=new HashMap<>();
-	public static int mc=0;
+	private int mc=0;
 	private int countEdges=0;
 
 	public DGraph(NodeData [] vertices,EdgeData[] edge) {
